@@ -10,8 +10,8 @@ import java.util.Random;
 
 public class Sequence<T> implements Markov<T> {
 
-    private Map<T, List<T>> chain;
-    private T last;
+    protected Map<T, List<T>> chain;
+    protected T last;
 
     public Sequence() {
         chain = new HashMap<T, List<T>>();
