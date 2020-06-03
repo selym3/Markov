@@ -17,6 +17,8 @@ import java.util.Queue;
 
 // each word is separate so when append is called i do not have to keep track
 // of the last thign i did was
+
+// adaptation of code by @samb (sam belliveau) 
 public class WordGenerator implements Markov<String> {
 
     private Map<String, List<Character>> chain;
@@ -25,7 +27,6 @@ public class WordGenerator implements Markov<String> {
     private int size;
 
     private static final char TERMINATOR = '_';
-    private static final char UNKNOWN = '?';
 
     public WordGenerator(int size) {
         chain = new HashMap<String, List<Character>>();
@@ -43,7 +44,7 @@ public class WordGenerator implements Markov<String> {
     }
 
     public WordGenerator(int size, String input) {
-        this(size);
+	this(size);
         append(input);
     }
 
@@ -107,12 +108,12 @@ public class WordGenerator implements Markov<String> {
                     // for now this ends the character with unknown character
                     // next = UNKNOWN;
 
-                    System.out.println(key + " => " + next);
+                    // System.out.println(key + " => " + next);
 
                     break;
                 } else {
                     next = characters.get(RANDOM.nextInt(characters.size()));
-                    System.out.println(key + " => " + next);
+                    // System.out.println(key + " => " + next);
 
                     // res.append(key);
                     if (next != TERMINATOR) {
@@ -129,6 +130,7 @@ public class WordGenerator implements Markov<String> {
 
     @Override
     public Queue<String> generate(int length, int seed) {
+	// implement seeded generate function
         return generate(length);
     }
 
@@ -151,7 +153,7 @@ public class WordGenerator implements Markov<String> {
             }
         }
 
-        System.out.println(chain);
+        // System.out.println(chain);
 
         return this;
     }
